@@ -1,0 +1,14 @@
+{
+  "name": "bot-discord-github",
+  "version": "1.0.0",
+  "description": "Bot Discord with github integration",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "nodemon src/index.js"
+  },
+  "author": "Emanuel Facundo",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
