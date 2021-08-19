@@ -4,11 +4,16 @@
   "description": "Bot Discord with github integration",
   "main": "src/index.js",
   "scripts": {
-    "test": "nodemon src/index.js"
+    "test": "nodemon src/index.js",
+    "start": "node src/index.js"
   },
   "author": "Emanuel Facundo",
   "license": "ISC",
+  "type": "module",
   "devDependencies": {
     "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
