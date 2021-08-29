@@ -1,32 +1,31 @@
-import { MessageEmbed } from "discord.js";
-import dotenv from "dotenv/config"
-
 import client from "./index.js";
 import constants from "../constants.js";
+import messagePR from './messagesPullRequest.js'
 
 const channel = () => client.channels.cache.get(process.env.CHANNEL_ID)
 
 
 export default async function webhook(req, res) {
   try {
-    const action = req.body.action 
+    const action = req.body.action
+    
+    if (!constants.actions.includes(action)) {
+      res.status(404).send("action not found")
+      return
+    }
+    
+    const comment = action == "comment" ? req.body.comment.body : ""
+    const repository = req.body.repository.full_name
     const sender = req.body.sender
     const pull_request = req.body.pull_request
     const reviewers = req.body.pull_request.requested_reviewers
+    const assignees = req.body.pull_request.assignees
 
-    if (!constants.actions.includes(action)) {
-      res.status(404).send("action not found")
+    if (action == "opened" || action == "closed") {
+      const messageSend =  messagePR(action, repository, sender, pull_request, assignees, reviewers)
+  
+      await channel().send({ embeds: [messageSend]})
     }
-
-    const messageSend =  messageEmbed(action, sender, pull_request, reviewers)
-
-    await channel().send({ embeds: [messageSend]})
-
-    await channel().send(`${reviewers.map(reviewer => {
-      return constants.reviewers[reviewer.login]
-    })}`)
-    const clean = await channel().messages.fetch({limit: reviewers.length})
-    await channel().bulkDelete(clean)
     
     res.status(200).send({
       message: "Message send"
@@ -37,24 +36,4 @@ export default async function webhook(req, res) {
       message: error.message
     })
   }
-}
-
-function messageEmbed(action, sender, pull_request, reviewers){
-  const colors = constants.colors
-
-  const messageEmbed =  new MessageEmbed()
-    .setColor(colors[action])
-    .setURL(pull_request.html_url)
-    .setAuthor(sender.login, sender.avatar_url)
-    .setTitle(`${pull_request.title} | ${action}`)
-    .setDescription(`${pull_request.body}`)
-    .setTimestamp()
-  
-  if (reviewers.length > 0){
-    messageEmbed.addField("Reviewers", `📌 ${reviewers.map(reviewer => {
-      return constants.reviewers[reviewer.login]
-    })}`)
-  }
-  
-  return messageEmbed
 }
