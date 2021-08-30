@@ -35,7 +35,7 @@ export default async function webhook(req, res) {
           })
         })
     } else if (action == "created") {
-      messageComment(action, repository, sender, comment, pull_request)
+      messageComment(repository, sender, comment, pull_request)
         .then(msg => {
           res.status(200).send({
             message: msg
