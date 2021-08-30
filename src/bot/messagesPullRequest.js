@@ -1,8 +1,9 @@
 import { MessageEmbed } from "discord.js"
 
+import client from "./index.js";
 import constants from "../constants.js";
 
-export default function messageEmbed(action, repository, sender, pull_request, assignees, reviewers) {
+export default async function messageEmbed(action, repository, sender, pull_request, assignees, reviewers) {
   const colors = constants.colors
 
   const messageEmbed = new MessageEmbed()
@@ -25,6 +26,8 @@ export default function messageEmbed(action, repository, sender, pull_request, a
     })}\n`)
   }
 
+  const channel = () => client.channels.cache.get(process.env.CHANNEL_ID)
+  await channel().send({ embeds: [messageEmbed]})
 
-  return messageEmbed
+  return `Message "${action} pull request" send with successfully`
 }
