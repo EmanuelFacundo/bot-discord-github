@@ -24,6 +24,12 @@ export default async function messageEmbed(action, repository, sender, pull_requ
     messageEmbed.addField("Reviewers 🧐", `📌 ${reviewers.map(reviewer => {
       return constants.contributors[reviewer.login] || reviewer.login
     })}\n`)
+
+    reviewers.forEach(reviewer => {
+      const userId = constants.contributors[reviewer.login].match(/[0-9]+/)[0]
+      const user = client.users.cache.get(userId)
+      user.send({ embeds: [messageEmbed] })
+    })
   }
 
   const channel = () => client.channels.cache.get(process.env.CHANNEL_ID)
