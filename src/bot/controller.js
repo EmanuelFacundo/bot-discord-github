@@ -1,10 +1,6 @@
-import client from "./index.js";
 import constants from "../constants.js";
 import messagePR from './messagesPullRequest.js'
 import messageComment from "./messageComments.js";
-
-
-
 
 export default async function webhook(req, res) {
   try {

@@ -2,6 +2,7 @@ import { MessageEmbed } from "discord.js"
 
 import client from "./index.js";
 import constants from "../constants.js";
+import sendMessageToUser from "./sendMessageToUser.js";
 
 export default async function messageEmbed(action, repository, sender, pull_request, assignees, reviewers) {
   const colors = constants.colors
@@ -27,8 +28,7 @@ export default async function messageEmbed(action, repository, sender, pull_requ
 
     reviewers.forEach(reviewer => {
       const userId = constants.contributors[reviewer.login].match(/[0-9]+/)[0]
-      const user = client.users.cache.get(userId)
-      user.send({ embeds: [messageEmbed] })
+      sendMessageToUser(userId, messageEmbed)
     })
   }
 

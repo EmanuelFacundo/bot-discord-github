@@ -1,6 +1,6 @@
-import client from "./index.js";
 import constants from "../constants.js";
 import { MessageEmbed } from "discord.js";
+import sendMessageToUser from "./sendMessageToUser.js";
 
 export default async function messageComments(repository, sender, comment, pull_request) {
 
@@ -15,17 +15,14 @@ export default async function messageComments(repository, sender, comment, pull_
   if (pull_request.assignees.length > 0) {
     pull_request.assignees.forEach( assignee => {
       const userId = constants.contributors[assignee.login].match(/[0-9]+/)[0]
-      const user = client.users.cache.get(userId)
-      user.send({ embeds: [messageEmbed]})
+      sendMessageToUser(userId, messageEmbed)
         
       return `Message send with successfully`
     })
   } else {
     const userId = constants.contributors[pull_request.user.login].match(/[0-9]+/)[0]
-    const user = client.users.cache.get(userId)
-    user.send({ embeds: [messageEmbed]})
+    sendMessageToUser(userId, messageEmbed)
     
     return `Message send with successfully`
   }
-
 }
