@@ -10,8 +10,9 @@ export default async function messageComments(repository, sender, comment, pull_
     .setURL(pull_request.html_url)
     .setAuthor(sender.login, sender.avatar_url)
     .setDescription(pull_request.body)
-    .addField(`${state} by ${sender.login}`, comment)
     .setTimestamp()
+
+  if (comment) messageEmbed.addField(`${state} by ${sender.login}`, comment)
 
   if (pull_request.assignees.length > 0) {
     pull_request.assignees.forEach(assignee => {
