@@ -9,19 +9,19 @@
 <h1 align="center">Bot Discord + Github</h1>
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/EmanuelFacundo/bot-discord-github?color=56BEB8">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/EmanuelFacundo/bot-discord-github?color=558b2f">
 
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/EmanuelFacundo/bot-discord-github?color=56BEB8">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/EmanuelFacundo/bot-discord-github?color=558b2f">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/EmanuelFacundo/bot-discord-github?color=56BEB8">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/EmanuelFacundo/bot-discord-github?color=558b2f">
 
-  <img alt="License" src="https://img.shields.io/github/license/EmanuelFacundo/bot-discord-github?color=56BEB8">
+  <img alt="License" src="https://img.shields.io/github/license/EmanuelFacundo/bot-discord-github?color=558b2f">
 
   <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/EmanuelFacundo/bot-discord-github?color=56BEB8" /> -->
 
   <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/EmanuelFacundo/bot-discord-github?color=56BEB8" /> -->
 
-  <img alt="Github stars" src="https://img.shields.io/github/stars/EmanuelFacundo/bot-discord-github?color=56BEB8" />
+  <img alt="Github stars" src="https://img.shields.io/github/stars/EmanuelFacundo/bot-discord-github?color=558b2f" />
 </p>
 
 <!-- Status -->
