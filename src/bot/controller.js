@@ -46,21 +46,14 @@ export default async function webhook(req, res) {
         })
     } else if (["submitted", "edited"].includes(action)) {
       lastState = req.body.review.state
-      const review = req.body.review.body ?? ''
+      const review = req.body.review.body
 
-      if (review) {
-        messageComment(repository, sender, review, pull_request, lastState)
-          .then(msg => {
-            res.status(200).send({
-              message: msg
-            })
+      messageComment(repository, sender, review, pull_request, lastState)
+        .then(msg => {
+          res.status(200).send({
+            message: msg
           })
-        return
-      }
-
-      res.state(200).send({
-        message: "no review"
-      })
+        })
     }
 
   } catch (error) {
