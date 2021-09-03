@@ -2,6 +2,8 @@ import constants from "../constants.js";
 import messagePR from './messagesPullRequest.js'
 import messageComment from "./messageComments.js";
 
+var lastState = ""
+
 export default async function webhook(req, res) {
   try {
     const action = req.body.action
@@ -18,7 +20,7 @@ export default async function webhook(req, res) {
     const reviewers = req.body.pull_request.requested_reviewers
     const assignees = req.body.pull_request.assignees
 
-    if (action == "opened" || action == "closed") {
+    if (["opened", "closed", "review_requested", "review_request_removed"].includes(action)) {
       messagePR(action, repository, sender, pull_request, assignees, reviewers)
         .then(msg => {
           res.status(200).send({
@@ -31,7 +33,7 @@ export default async function webhook(req, res) {
           })
         })
     } else if (action == "created") {
-      messageComment(repository, sender, comment, pull_request)
+      messageComment(repository, sender, comment, pull_request, lastState)
         .then(msg => {
           res.status(200).send({
             message: msg
@@ -42,6 +44,23 @@ export default async function webhook(req, res) {
             message: err.message
           })
         })
+    } else if (["submitted", "edited"].includes(action)) {
+      lastState = req.body.review.state
+      const review = req.body.review.body ?? ''
+
+      if (review) {
+        messageComment(repository, sender, review, pull_request, lastState)
+          .then(msg => {
+            res.status(200).send({
+              message: msg
+            })
+          })
+        return
+      }
+
+      res.state(200).send({
+        message: "no review"
+      })
     }
 
   } catch (error) {
