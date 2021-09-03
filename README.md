@@ -53,6 +53,7 @@ Messages are sent according to the webhook action, depending on the type of acti
 
 :heavy_check_mark: Message open/close of pull requests;\
 :heavy_check_mark: Send messages private to reviewers/assignees ;\
+:heavy_check_mark: Send messages private to assignees in status approved/changes_requested/comments ;
 <!-- :heavy_check_mark: Feature 3; -->
 
 ## :rocket: Technologies ##
