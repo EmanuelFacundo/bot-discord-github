@@ -1,12 +1,12 @@
 <div align="center" id="top"> 
-  <img src="./.github/app.gif" alt="Bot Discord Github" />
+  <img src="./.github/dit.png" width="150px" alt="Bot Discord Github" />
 
   &#xa0;
 
   <!-- <a href="https://botdiscordgithub.netlify.app">Demo</a> -->
 </div>
 
-<h1 align="center">Bot Discord + Github</h1>
+<h1 align="center">Bot Dit</h1>
 
 <p align="center">
   <img alt="Github top language" src="https://img.shields.io/github/languages/top/EmanuelFacundo/bot-discord-github?color=558b2f">
@@ -27,7 +27,7 @@
 <!-- Status -->
 
 <h4 align="center"> 
-	🚧  Bot Discord + Github 🚀 Under construction...  🚧
+	🚧  Bot Dit 🚀 Under construction...  🚧
 </h4> 
 
 <hr> 
@@ -46,8 +46,11 @@
 
 ## :dart: About ##
 
-This is a bot to do a little integration between github and a discord server, the bot needs to be added to a webhook of your repository.
-Messages are sent according to the webhook action, depending on the type of action in which the message is sent in the specified channel and to the users involved in the PR
+A bot for you and your team to have a little more automation in PR reviewers.
+The bot's job is to let everyone involved in the PR know what is happening, for example: when the PR is open, all reviewers are notified by receiving a private message in discord, and at the same time it is notified to the rest of the staff at team that a new PR was created and who are the people involved, such as the assigners and reviewers.
+RP designators are also notified when a reviewer makes a change request and reviewers are notified again after a new reviewer request.
+
+**I recommend that everyone is in disagreement for a better use of the Bot**
 
 ## :sparkles: Features ##
 
