@@ -50,7 +50,7 @@ A bot for you and your team to have a little more automation in PR reviewers.
 The bot's job is to let everyone involved in the PR know what is happening, for example: when the PR is open, all reviewers are notified by receiving a private message in discord, and at the same time it is notified to the rest of the staff at team that a new PR was created and who are the people involved, such as the assigners and reviewers.
 RP designators are also notified when a reviewer makes a change request and reviewers are notified again after a new reviewer request.
 
-**I recommend that everyone is in disagreement for a better use of the Bot**
+**I recommend that everyone is on the same discord server for a better use of the Bot**
 
 ## :sparkles: Features ##
 
